@@ -53,9 +53,10 @@ public class FileProcessor {
         return br.lines().toList();
     }
 
-    private ArrayList<String> FileProcessor(File file) {
-//        cpnvert the entire file to a string array
-        ArrayList<String> processed = new ArrayList<>();
+    public ArrayList<Book> FileParser(File file) {
+//        cpnvert the entire file to a book array
+        ArrayList<Book> books = new ArrayList<>();
+        String[] tmp = {"empty", "empty", "empty", "empty", "empty"};
 
         Scanner scan = null;
         try {
@@ -74,22 +75,19 @@ public class FileProcessor {
             }
         } finally {
             while (scan.hasNext()) {
-                processed.add(scan.nextLine());
+                for (int i = 0; i < 5; i++) {
+//                    not neccesary for but added to make sure we add the 5 props of the book obj
+                    tmp[i] = scan.nextLine().split(":")[1];
+                }
+                books.add(new Book(tmp[0], tmp[1], tmp[2], tmp[3], tmp[4]));
+//                manual cleannig of the three spaces between book in the file
+                for (int i = 0; i < 3; i++) {
+                    if (scan.hasNextLine()) {
+                        scan.nextLine();
+                    }
+                }
             }
-
         }
-        return processed;
-    }
-
-    public ArrayList<Book> BooksLoader(File file) {
-//        this takes a file, read a file, and return an ArrayList of books constructed from teh file received
-        ArrayList<Book> books = new ArrayList<>();
-        ArrayList<String> data = FileProcessor(file);
-        
-        for(String line : data){
-            System.out.println(line);
-        }
-        
         return books;
     }
 }

@@ -4,10 +4,12 @@
  */
 package Tester;
 
+import ClassTemplates.Book;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,7 +43,12 @@ public class TesterMain {
         // TODO code application logic here
         FileProcessor fp = new FileProcessor();
         File file = new File("src/DataBase/books.txt");
-        fp.BooksLoader(file);
+        ArrayList<Book> books = fp.FileParser(file);
+        
+        System.out.println(books.size());
+        for (Book b : books){
+            System.out.println(b.getName());
+        }
 //        try {
 //            System.out.println(fp.FileLoader0(file));
 //        } catch (FileNotFoundException ex) {
