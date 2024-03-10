@@ -16,9 +16,9 @@ public class Book {
     private String name;
     private String author;
     private String editorial;
-    private Date edition;
+    private String edition;
     
-    public Book(String code, String name, String author, String editorial, Date edition){
+    public Book(String code, String name, String author, String editorial, String edition){
         //this.ISBN = ISBN;
         this.code = code;
         this.name = name;
@@ -44,7 +44,7 @@ public class Book {
         return editorial;
     }
 
-    public Date getEdition() {
+    public String getEdition() {
         return edition;
     }
     

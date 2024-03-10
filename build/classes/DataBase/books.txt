@@ -1,0 +1,357 @@
+NAME: To Kill a Mockingbird
+CODE: 9780061120084
+AUTHOR: Harper Lee
+EDITORIAL: Harper Perennial Modern Classics
+EDITION: 50th Anniversary Edition
+
+
+
+NAME: 1984
+CODE: 9780451524935
+AUTHOR: George Orwell
+EDITORIAL: Signet Classics
+EDITION: Reissue
+
+
+
+NAME: Pride and Prejudice
+CODE: 9780141439518
+AUTHOR: Jane Austen
+EDITORIAL: Penguin Classics
+EDITION: Revised
+
+
+
+NAME: The Great Gatsby
+CODE: 9780743273565
+AUTHOR: F. Scott Fitzgerald
+EDITORIAL: Scribner
+EDITION: Reissue
+
+
+
+NAME: Brave New World
+CODE: 9780060850524
+AUTHOR: Aldous Huxley
+EDITORIAL: Harper Perennial Modern Classics
+EDITION: Reissue
+
+
+
+NAME: The Catcher in the Rye
+CODE: 9780316769488
+AUTHOR: J.D. Salinger
+EDITORIAL: Little, Brown and Company
+EDITION: Reissue
+
+
+
+NAME: One Hundred Years of Solitude
+CODE: [ISBN not provided]
+AUTHOR: Gabriel García Márquez
+EDITORIAL: Harper Perennial Modern Classics
+EDITION: Reissue
+
+
+
+NAME: The Lord of the Rings
+CODE: 9780618640157
+AUTHOR: J.R.R. Tolkien
+EDITORIAL: Mariner Books
+EDITION: Revised
+
+
+
+NAME: Crime and Punishment
+CODE: 9780140449136
+AUTHOR: Fyodor Dostoevsky
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: The Hobbit
+CODE: 9780547928227
+AUTHOR: J.R.R. Tolkien
+EDITORIAL: Mariner Books
+EDITION: Revised
+
+
+
+NAME: Frankenstein
+CODE: 9780486282114
+AUTHOR: Mary Shelley
+EDITORIAL: Dover Publications
+EDITION: Unabridged
+
+
+
+NAME: Moby-Dick
+CODE: 9780142437247
+AUTHOR: Herman Melville
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: The Picture of Dorian Gray
+CODE: 9780141439570
+AUTHOR: Oscar Wilde
+EDITORIAL: Penguin Classics
+EDITION: Revised
+
+
+
+NAME: The Odyssey
+CODE: 9780140268867
+AUTHOR: Homer
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: Dracula
+CODE: 9780486411095
+AUTHOR: Bram Stoker
+EDITORIAL: Dover Publications
+EDITION: Unabridged
+
+
+
+NAME: The Brothers Karamazov
+CODE: 9780374528379
+AUTHOR: Fyodor Dostoevsky
+EDITORIAL: Farrar, Straus and Giroux
+EDITION: Reissue
+
+
+
+NAME: Wuthering Heights
+CODE: 9780141439556
+AUTHOR: Emily Brontë
+EDITORIAL: Penguin Classics
+EDITION: Revised
+
+
+
+NAME: The Scarlet Letter
+CODE: 9780486280486
+AUTHOR: Nathaniel Hawthorne
+EDITORIAL: Dover Publications
+EDITION: Unabridged
+
+
+
+NAME: Heart of Darkness
+CODE: 9780486264646
+AUTHOR: Joseph Conrad
+EDITORIAL: Dover Publications
+EDITION: Unabridged
+
+
+
+NAME: The Count of Monte Cristo
+CODE: 9780140449266
+AUTHOR: Alexandre Dumas
+EDITORIAL: Penguin Classics
+EDITION: Revised
+
+
+
+NAME: Anna Karenina
+CODE: 9780143035008
+AUTHOR: Leo Tolstoy
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: The Grapes of Wrath
+CODE: 9780143039433
+AUTHOR: John Steinbeck
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: The Iliad
+CODE: 9780140275360
+AUTHOR: Homer
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: Jane Eyre
+CODE: 9780141441146
+AUTHOR: Charlotte Brontë
+EDITORIAL: Penguin Classics
+EDITION: Revised
+
+
+
+NAME: The Adventures of Huckleberry Finn
+CODE: 9780486280615
+AUTHOR: Mark Twain
+EDITORIAL: Dover Publications
+EDITION: Unabridged
+
+
+
+NAME: The Stranger
+CODE: 9780679720201
+AUTHOR: Albert Camus
+EDITORIAL: Vintage International
+EDITION: Reissue
+
+
+
+NAME: The Lord of the Rings
+CODE: 9780618640157
+AUTHOR: J.R.R. Tolkien
+EDITORIAL: Mariner Books
+EDITION: Revised
+
+
+
+NAME: Crime and Punishment
+CODE: 9780140449136
+AUTHOR: Fyodor Dostoevsky
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: The Hobbit
+CODE: 9780547928227
+AUTHOR: J.R.R. Tolkien
+EDITORIAL: Mariner Books
+EDITION: Revised
+
+
+
+NAME: Frankenstein
+CODE: 9780486282114
+AUTHOR: Mary Shelley
+EDITORIAL: Dover Publications
+EDITION: Unabridged
+
+
+
+NAME: Moby-Dick
+CODE: 9780142437247
+AUTHOR: Herman Melville
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: The Picture of Dorian Gray
+CODE: 9780141439570
+AUTHOR: Oscar Wilde
+EDITORIAL: Penguin Classics
+EDITION: Revised
+
+
+
+NAME: The Odyssey
+CODE: 9780140268867
+AUTHOR: Homer
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: Dracula
+CODE: 9780486411095
+AUTHOR: Bram Stoker
+EDITORIAL: Dover Publications
+EDITION: Unabridged
+
+
+
+NAME: The Brothers Karamazov
+CODE: 9780374528379
+AUTHOR: Fyodor Dostoevsky
+EDITORIAL: Farrar, Straus and Giroux
+EDITION: Reissue
+
+
+
+NAME: Wuthering Heights
+CODE: 9780141439556
+AUTHOR: Emily Brontë
+EDITORIAL: Penguin Classics
+EDITION: Revised
+
+
+
+NAME: The Scarlet Letter
+CODE: 9780486280486
+AUTHOR: Nathaniel Hawthorne
+EDITORIAL: Dover Publications
+EDITION: Unabridged
+
+
+
+NAME: Heart of Darkness
+CODE: 9780486264646
+AUTHOR: Joseph Conrad
+EDITORIAL: Dover Publications
+EDITION: Unabridged
+
+
+
+NAME: The Count of Monte Cristo
+CODE: 9780140449266
+AUTHOR: Alexandre Dumas
+EDITORIAL: Penguin Classics
+EDITION: Revised
+
+
+
+NAME: Anna Karenina
+CODE: 9780143035008
+AUTHOR: Leo Tolstoy
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: The Grapes of Wrath
+CODE: 9780143039433
+AUTHOR: John Steinbeck
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: The Iliad
+CODE: 9780140275360
+AUTHOR: Homer
+EDITORIAL: Penguin Classics
+EDITION: Reissue
+
+
+
+NAME: Jane Eyre
+CODE: 9780141441146
+AUTHOR: Charlotte Brontë
+EDITORIAL: Penguin Classics
+EDITION: Revised
+
+
+
+NAME: The Adventures of Huckleberry Finn
+CODE: 9780486280615
+AUTHOR: Mark Twain
+EDITORIAL: Dover Publications
+EDITION: Unabridged
+
+
+
+NAME: The Stranger
+CODE: 9780679720201
+AUTHOR: Albert Camus
+EDITORIAL: Vintage International
+EDITION: Reissue
