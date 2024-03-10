@@ -30,7 +30,7 @@ public class GitPratice {
         File bookStock = new File("src/DataBase/books.stock");
         
         FileProcessor fp = new FileProcessor();
-        fp.FileProcessor(bookStock);
+//        fp.FileProcessor(bookStock);
         
     }
 

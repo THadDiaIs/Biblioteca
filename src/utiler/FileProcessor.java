@@ -4,10 +4,10 @@
  */
 package utiler;
 
+import ClassTemplates.Book;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
-//import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,20 +15,20 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author antonh
  */
 public class FileProcessor {
-
+//    file format
     //code; //3\d - 3\w
     //name;
     //author;
     //editorial;
     //edition;
+
+//    all teh read from filesystem methods throws the  expection to function swho calls it 
     private File FileLoader() throws InterruptedException, InvocationTargetException {
         final File[] selectedFile = {null};
         //SwingUtilities.invokeLater(() -> {
@@ -46,16 +46,15 @@ public class FileProcessor {
         return selectedFile[0];
     }
 
-    
-    private List<String> FileLoader(File file) throws FileNotFoundException{
+    private List<String> FileLoader(File file) throws FileNotFoundException {
 //        read a file and return an list of strings of the entire file
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         return br.lines().toList();
     }
 
-    public ArrayList<String> FileProcessor(File file) {
-        //cpnvert the entire file to a string array
+    private ArrayList<String> FileProcessor(File file) {
+//        cpnvert the entire file to a string array
         ArrayList<String> processed = new ArrayList<>();
 
         Scanner scan = null;
@@ -64,14 +63,14 @@ public class FileProcessor {
         } catch (FileNotFoundException ex) {
             try {
                 System.out.println("provided file not found, prompting for a new one");
-                //Logger.getLogger(FileProcessor.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(FileProcessor.class.getName()).log(Level.SEVERE, null, ex);
                 scan = new Scanner(this.FileLoader());
             } catch (InterruptedException | InvocationTargetException ex1) {
-                //Logger.getLogger(FileProcessor.class.getName()).log(Level.SEVERE, null, ex1);
+//                Logger.getLogger(FileProcessor.class.getName()).log(Level.SEVERE, null, ex1);
                 System.out.println("invocation error or interrupted");
             } catch (FileNotFoundException ex1) {
                 System.out.println("YOur file still does not exist");
-                //Logger.getLogger(FileProcessor.class.getName()).log(Level.SEVERE, null, ex1);
+//                Logger.getLogger(FileProcessor.class.getName()).log(Level.SEVERE, null, ex1);
             }
         } finally {
             while (scan.hasNext()) {
@@ -79,7 +78,18 @@ public class FileProcessor {
             }
 
         }
-        System.out.println(processed);
         return processed;
+    }
+
+    public ArrayList<Book> BooksLoader(File file) {
+//        this takes a file, read a file, and return an ArrayList of books constructed from teh file received
+        ArrayList<Book> books = new ArrayList<>();
+        ArrayList<String> data = FileProcessor(file);
+        
+        for(String line : data){
+            System.out.println(line);
+        }
+        
+        return books;
     }
 }

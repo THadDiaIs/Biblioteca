@@ -41,7 +41,7 @@ public class TesterMain {
         // TODO code application logic here
         FileProcessor fp = new FileProcessor();
         File file = new File("src/DataBase/books.txt");
-        fp.FileProcessor(file);
+        fp.BooksLoader(file);
 //        try {
 //            System.out.println(fp.FileLoader0(file));
 //        } catch (FileNotFoundException ex) {
