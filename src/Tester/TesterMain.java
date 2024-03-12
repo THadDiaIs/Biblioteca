@@ -22,7 +22,7 @@ import utiler.FileProcessor;
 public class TesterMain {
 
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments,
      */
     public static void main(String[] args) {
         
@@ -42,13 +42,14 @@ public class TesterMain {
         
         // TODO code application logic here
         FileProcessor fp = new FileProcessor();
-        File file = new File("src/DataBase/books.txt");
-        ArrayList<Book> books = fp.FileParser(file);
+        
+        ArrayList<Book> books = fp.BookDBLoader(new File("src/DataBase/books.txt"));
         
         System.out.println(books.size());
         for (Book b : books){
             System.out.println(b.getName());
         }
+        
 //        try {
 //            System.out.println(fp.FileLoader0(file));
 //        } catch (FileNotFoundException ex) {

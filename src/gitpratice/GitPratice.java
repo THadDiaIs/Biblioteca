@@ -9,6 +9,7 @@ import java.io.File;
 import utiler.FileProcessor.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import utiler.FileProcessor;
 
@@ -24,14 +25,15 @@ public class GitPratice {
      * @param args the command line arguments
      * @throws java.text.ParseException
      */
-    
-    
-    public static void main(String[] args) throws ParseException {
-        File bookStock = new File("src/DataBase/books.stock");
-        
+    public static void main(String[] args){
         FileProcessor fp = new FileProcessor();
 //        fp.FileProcessor(bookStock);
+        ArrayList<Book> books = fp.BookDBLoader(new File("src/DataBase/books.diadb"));
+        ArrayList<Student> students = fp.StudentDBLoader(new File("src/DataBase/students.diadb"));
+        ArrayList<Borrow> borrows = fp.BorrowDBLoader(new File("src/DataBase/borrows.diadb"));
         
-    }
+        
 
+
+    }
 }
