@@ -4,6 +4,10 @@
  */
 package gui;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author arfcd
@@ -30,15 +34,16 @@ public class MainGui extends javax.swing.JFrame {
         overview = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         books = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         students = new javax.swing.JPanel();
         borrows = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Libreria");
+        setTitle("Library");
         setAlwaysOnTop(true);
-        setMaximumSize(new java.awt.Dimension(1000, 700));
-        setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(1000, 700));
+        setMaximumSize(new java.awt.Dimension(1000, 800));
+        setMinimumSize(new java.awt.Dimension(1000, 700));
+        setPreferredSize(new java.awt.Dimension(1000, 800));
 
         jLabel1.setText("something here");
 
@@ -62,15 +67,23 @@ public class MainGui extends javax.swing.JFrame {
         container.addTab("Overview", overview);
         overview.getAccessibleContext().setAccessibleName("overview");
 
+        jLabel2.setText("other something here too");
+
         javax.swing.GroupLayout booksLayout = new javax.swing.GroupLayout(books);
         books.setLayout(booksLayout);
         booksLayout.setHorizontalGroup(
             booksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(booksLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel2)
+                .addContainerGap(829, Short.MAX_VALUE))
         );
         booksLayout.setVerticalGroup(
             booksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
+            .addGroup(booksLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2)
+                .addContainerGap(635, Short.MAX_VALUE))
         );
 
         container.addTab("Books", books);
@@ -143,13 +156,14 @@ public class MainGui extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        try {
+            /* Create and display the form */
+            java.awt.EventQueue.invokeAndWait(() -> {
                 new MainGui().setVisible(true);
-            }
-        });
+            });
+        } catch (InterruptedException | InvocationTargetException ex) {
+            Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -157,6 +171,7 @@ public class MainGui extends javax.swing.JFrame {
     private javax.swing.JPanel borrows;
     private javax.swing.JTabbedPane container;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel overview;
     private javax.swing.JPanel students;
     // End of variables declaration//GEN-END:variables

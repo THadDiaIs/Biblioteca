@@ -7,7 +7,6 @@ package ClassTemplates;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -25,7 +24,7 @@ public class Student {
     public Student(String ID, String name, String degree, String dob) {
         this.ID = ID;
         this.name = name;
-        //this.degree = degree; transform to integer
+        this.setDegree(degree);
         this.setDob(dob);
     }
     
@@ -36,7 +35,15 @@ public class Student {
         } catch (ParseException ex) {
             this.dob = new Date(System.currentTimeMillis());
             //Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("error ocurred with creating the date prop");
+            System.out.println("error ocurred with creating the date prop for "+this.ID);
+        }
+    }
+    
+    private void setDegree (String deg) {
+        try {
+            this.degree = Integer.parseInt(deg.strip());
+        }catch(NumberFormatException e){
+            this.degree = 0;
         }
     }
     

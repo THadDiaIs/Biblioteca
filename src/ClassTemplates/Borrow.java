@@ -15,14 +15,14 @@ import java.util.Date;
 public class Borrow {
     private String ID;
     private String studentID;
-    private long ISBN;
+    private String ISBN;
     private Date[] borrowDate = new Date[2];//0:stat borrow 1 returned date will be in format yyyy-mm-dd default fro 1 pos = null
     
     
     public Borrow (String ID, String studentID, String ISBN, String borrowDate){
         this.ID = ID;
         this.studentID = studentID;
-//        this.ISBN = ISBN; string to long
+        this.ISBN = ISBN; //string to long
         this.setDate(borrowDate);       
     }
     
@@ -34,7 +34,7 @@ public class Borrow {
         } catch (ParseException ex) {
             this.borrowDate[1] =null;
             //Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("error parsing the date[1] prop");
+            System.out.println("error parsing the date[1] prop for "+this.ID);
         }
     }
     

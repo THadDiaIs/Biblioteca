@@ -72,7 +72,7 @@ public class FileProcessor {
     public ArrayList<Book> BookDBLoader(File file) {
 //        cpnvert the entire file to a book array
         ArrayList<Book> books = new ArrayList<>();
-        String[] tmp = {"empty", "empty", "empty", "empty", "empty"};
+        String[] tmp = new String[6];
         Scanner scanner = null;
 
         try {
@@ -87,11 +87,10 @@ public class FileProcessor {
             if (firstLine.length() > 1) {
                 tmp[0] = firstLine.split(":").length > 1 ? firstLine.split(":")[1] : "DataEntryError";
                 for (int i = 1; i < tmp.length; i++) {
-//                    not neccesary for but added to make sure we add the 5 props of the book obj
                     String[] currLine = scanner.nextLine().split(":");
                     tmp[i] = currLine.length > 1 ? currLine[1] : "DataEntryError";
                 }
-                books.add(new Book(tmp[0], tmp[1], tmp[2], tmp[3], tmp[4]));
+                books.add(new Book(tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]));
             }
         }
         return books;
@@ -115,10 +114,9 @@ public class FileProcessor {
 //        
 //        return ;
 //    }
-    
     public ArrayList<Student> StudentDBLoader(File file) {
 //        cpnvert the entire file to a book array
-        String[] tmp = new String[5];
+        String[] tmp = new String[4];
         ArrayList<Student> students = new ArrayList<>();
         Scanner scanner = null;
 
@@ -134,7 +132,6 @@ public class FileProcessor {
             if (firstLine.length() > 1) {
                 tmp[0] = firstLine.split(":").length > 1 ? firstLine.split(":")[1] : "DataEntryError";
                 for (int i = 1; i < tmp.length; i++) {
-//                    not neccesary for but added to make sure we add the 5 props of the book obj
                     String[] currLine = scanner.nextLine().split(":");
                     tmp[i] = currLine.length > 1 ? currLine[1] : "DataEntryError";
                 }
@@ -143,7 +140,7 @@ public class FileProcessor {
         }
         return students;
     }
-    
+
     public ArrayList<Borrow> BorrowDBLoader(File file) {
 //        cpnvert the entire file to a book array
         String[] tmp = new String[4];
@@ -162,7 +159,6 @@ public class FileProcessor {
             if (firstLine.length() > 1) {
                 tmp[0] = firstLine.split(":").length > 1 ? firstLine.split(":")[1] : "DataEntryError";
                 for (int i = 1; i < tmp.length; i++) {
-//                    not neccesary for but added to make sure we add the 5 props of the book obj
                     String[] currLine = scanner.nextLine().split(":");
                     tmp[i] = currLine.length > 1 ? currLine[1] : "DataEntryError";
                 }
