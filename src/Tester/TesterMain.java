@@ -43,13 +43,17 @@ public class TesterMain {
         // TODO code application logic here
         FileProcessor fp = new FileProcessor();
         
-        ArrayList<Book> books = fp.BookDBLoader(new File("src/DataBase/books.txt"));
+//        ArrayList<Book> books = fp.BookDBLoader(new File("src/DataBase/books.txt"));
+//        
+//        System.out.println(books.size());
+//        for (Book b : books){
+//            System.out.println(b.getName());
+//        }
+        String[] a = {"a","b"};
         
-        System.out.println(books.size());
-        for (Book b : books){
-            System.out.println(b.getName());
-        }
+        //a = a.toString().concat("k").split("\\w");
         
+        System.out.println();
 //        try {
 //            System.out.println(fp.FileLoader0(file));
 //        } catch (FileNotFoundException ex) {

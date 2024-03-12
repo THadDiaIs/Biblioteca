@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gui;
+import ClassTemplates.Book;
+import ClassTemplates.Borrow;
+import java.util.ArrayList;
+import utiler.Filters;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -19,6 +20,7 @@ public class MainGui extends javax.swing.JFrame {
      */
     public MainGui() {
         initComponents();
+        
     }
 
     /**
@@ -30,13 +32,37 @@ public class MainGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        borrowOptions = new javax.swing.ButtonGroup();
         container = new javax.swing.JTabbedPane();
         overview = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        overviewContainer = new javax.swing.JScrollPane();
+        overviewTable = new javax.swing.JTable();
+        brOverview = new javax.swing.JLabel();
+        brActive = new javax.swing.JLabel();
+        brActiveNum = new javax.swing.JLabel();
+        brExprNum = new javax.swing.JLabel();
+        brExpr = new javax.swing.JLabel();
+        boBorrwdNum = new javax.swing.JLabel();
+        boBorrwd = new javax.swing.JLabel();
+        boAvailNum = new javax.swing.JLabel();
+        boAvail = new javax.swing.JLabel();
+        bookOverview = new javax.swing.JLabel();
+        sOverview = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        regStudentsNum = new javax.swing.JLabel();
+        actvStudentsNum = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        books = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        students = new javax.swing.JPanel();
-        borrows = new javax.swing.JPanel();
+        borrow = new javax.swing.JPanel();
+        allBorrows = new javax.swing.JRadioButton();
+        activeBorrows = new javax.swing.JRadioButton();
+        expiringBorrow = new javax.swing.JRadioButton();
+        expiredBorrow = new javax.swing.JRadioButton();
+        overviewContainer1 = new javax.swing.JScrollPane();
+        overviewTable1 = new javax.swing.JTable();
+        book = new javax.swing.JPanel();
+        student = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Library");
@@ -45,134 +71,300 @@ public class MainGui extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1000, 700));
         setPreferredSize(new java.awt.Dimension(1000, 800));
 
-        jLabel1.setText("something here");
+        title.setText("General overview:");
+
+        overviewTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        overviewContainer.setViewportView(overviewTable);
+
+        brOverview.setText("Borrows");
+
+        brActive.setText("Active:");
+
+        brActiveNum.setText("jLabel3");
+
+        brExprNum.setText("jLabel3");
+
+        brExpr.setText("Expired:");
+
+        boBorrwdNum.setText("jLabel3");
+
+        boBorrwd.setText("Borrowed:");
+
+        boAvailNum.setText("jLabel3");
+
+        boAvail.setText("Avaliable:");
+
+        bookOverview.setText("Books");
+
+        sOverview.setText("Students");
+
+        jLabel12.setText("Reg. Students");
+
+        regStudentsNum.setText("jLabel3");
+
+        actvStudentsNum.setText("jLabel3");
+
+        jLabel15.setText("Active:");
+
+        jLabel1.setText("Expires Today");
 
         javax.swing.GroupLayout overviewLayout = new javax.swing.GroupLayout(overview);
         overview.setLayout(overviewLayout);
         overviewLayout.setHorizontalGroup(
             overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(911, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(brOverview)
+                    .addGroup(overviewLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(brExpr)
+                            .addComponent(brActive))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(brActiveNum)
+                            .addComponent(brExprNum))))
+                .addGap(150, 150, 150)
+                .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bookOverview)
+                    .addGroup(overviewLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(boAvail)
+                            .addComponent(boBorrwd))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boBorrwdNum)
+                            .addComponent(boAvailNum))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(overviewLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(regStudentsNum)
+                            .addComponent(actvStudentsNum)))
+                    .addComponent(sOverview))
+                .addGap(207, 207, 207))
+            .addGroup(overviewLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title)
+                    .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(overviewContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         overviewLayout.setVerticalGroup(
             overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
+                .addComponent(title)
+                .addGap(18, 18, 18)
+                .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(overviewLayout.createSequentialGroup()
+                            .addComponent(sOverview)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12)
+                                .addComponent(regStudentsNum))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel15)
+                                .addComponent(actvStudentsNum)))
+                        .addGroup(overviewLayout.createSequentialGroup()
+                            .addComponent(bookOverview)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(boBorrwd)
+                                .addComponent(boBorrwdNum))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(boAvail)
+                                .addComponent(boAvailNum))))
+                    .addGroup(overviewLayout.createSequentialGroup()
+                        .addComponent(brOverview)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(brActive)
+                            .addComponent(brActiveNum))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(overviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(brExpr)
+                            .addComponent(brExprNum))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(643, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(overviewContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(181, 181, 181))
         );
 
         container.addTab("Overview", overview);
-        overview.getAccessibleContext().setAccessibleName("overview");
 
-        jLabel2.setText("other something here too");
+        allBorrows.setSelected(true);
+        allBorrows.setText("All");
+        allBorrows.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allBorrowsActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout booksLayout = new javax.swing.GroupLayout(books);
-        books.setLayout(booksLayout);
-        booksLayout.setHorizontalGroup(
-            booksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(booksLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel2)
-                .addContainerGap(829, Short.MAX_VALUE))
+        activeBorrows.setText("Active");
+
+        expiringBorrow.setText("Expires today");
+
+        expiredBorrow.setText("Expired");
+
+        overviewTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        overviewContainer1.setViewportView(overviewTable1);
+
+        javax.swing.GroupLayout borrowLayout = new javax.swing.GroupLayout(borrow);
+        borrow.setLayout(borrowLayout);
+        borrowLayout.setHorizontalGroup(
+            borrowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(borrowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(borrowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(borrowLayout.createSequentialGroup()
+                        .addComponent(allBorrows)
+                        .addGap(69, 69, 69)
+                        .addComponent(activeBorrows)
+                        .addGap(79, 79, 79)
+                        .addComponent(expiringBorrow)
+                        .addGap(70, 70, 70)
+                        .addComponent(expiredBorrow))
+                    .addComponent(overviewContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
-        booksLayout.setVerticalGroup(
-            booksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(booksLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel2)
-                .addContainerGap(635, Short.MAX_VALUE))
+        borrowLayout.setVerticalGroup(
+            borrowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(borrowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(borrowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(allBorrows)
+                    .addComponent(activeBorrows)
+                    .addComponent(expiringBorrow)
+                    .addComponent(expiredBorrow))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(overviewContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(389, Short.MAX_VALUE))
         );
 
-        container.addTab("Books", books);
+        container.addTab("Borrows", borrow);
 
-        javax.swing.GroupLayout studentsLayout = new javax.swing.GroupLayout(students);
-        students.setLayout(studentsLayout);
-        studentsLayout.setHorizontalGroup(
-            studentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+        javax.swing.GroupLayout bookLayout = new javax.swing.GroupLayout(book);
+        book.setLayout(bookLayout);
+        bookLayout.setHorizontalGroup(
+            bookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1038, Short.MAX_VALUE)
         );
-        studentsLayout.setVerticalGroup(
-            studentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
-        );
-
-        container.addTab("Students", students);
-
-        javax.swing.GroupLayout borrowsLayout = new javax.swing.GroupLayout(borrows);
-        borrows.setLayout(borrowsLayout);
-        borrowsLayout.setHorizontalGroup(
-            borrowsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
-        borrowsLayout.setVerticalGroup(
-            borrowsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
+        bookLayout.setVerticalGroup(
+            bookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 769, Short.MAX_VALUE)
         );
 
-        container.addTab("Borrows", borrows);
+        container.addTab("Books", book);
+
+        javax.swing.GroupLayout studentLayout = new javax.swing.GroupLayout(student);
+        student.setLayout(studentLayout);
+        studentLayout.setHorizontalGroup(
+            studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1038, Short.MAX_VALUE)
+        );
+        studentLayout.setVerticalGroup(
+            studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 769, Short.MAX_VALUE)
+        );
+
+        container.addTab("Students", student);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(container)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(container)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-
-        container.getAccessibleContext().setAccessibleName("container");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void allBorrowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allBorrowsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_allBorrowsActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        try {
-            /* Create and display the form */
-            java.awt.EventQueue.invokeAndWait(() -> {
-                new MainGui().setVisible(true);
-            });
-        } catch (InterruptedException | InvocationTargetException ex) {
-            Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
+    public void loadOverview(ArrayList<Borrow> borrow){
+        Filters flt = new Filters();
+        this.overviewTable.setModel(flt.overview(borrow));
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel books;
-    private javax.swing.JPanel borrows;
+    private javax.swing.JRadioButton activeBorrows;
+    private javax.swing.JLabel actvStudentsNum;
+    private javax.swing.JRadioButton allBorrows;
+    private javax.swing.JLabel boAvail;
+    private javax.swing.JLabel boAvailNum;
+    private javax.swing.JLabel boBorrwd;
+    private javax.swing.JLabel boBorrwdNum;
+    private javax.swing.JPanel book;
+    private javax.swing.JLabel bookOverview;
+    private javax.swing.JPanel borrow;
+    private javax.swing.ButtonGroup borrowOptions;
+    private javax.swing.JLabel brActive;
+    private javax.swing.JLabel brActiveNum;
+    private javax.swing.JLabel brExpr;
+    private javax.swing.JLabel brExprNum;
+    private javax.swing.JLabel brOverview;
     private javax.swing.JTabbedPane container;
+    private javax.swing.JRadioButton expiredBorrow;
+    private javax.swing.JRadioButton expiringBorrow;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JPanel overview;
-    private javax.swing.JPanel students;
+    private javax.swing.JScrollPane overviewContainer;
+    private javax.swing.JScrollPane overviewContainer1;
+    private javax.swing.JTable overviewTable;
+    private javax.swing.JTable overviewTable1;
+    private javax.swing.JLabel regStudentsNum;
+    private javax.swing.JLabel sOverview;
+    private javax.swing.JPanel student;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

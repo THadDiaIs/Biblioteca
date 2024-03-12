@@ -41,6 +41,18 @@ public class Borrow {
     public Date[] getBorrowDate() {
         return borrowDate;
     }
+
+    public String getID() {
+        return ID;
+    }
+
+    public String getStudentID() {
+        return studentID;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
     
     public int borrowTime () {
         //return int of days of the borrow
