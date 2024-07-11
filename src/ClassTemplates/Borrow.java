@@ -1,22 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ClassTemplates;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- *
- * @author arfcd
- */
 public class Borrow {
     private String ID;
     private String studentID;
     private String ISBN;
-    private Date[] borrowDate = new Date[2];//0:stat borrow 1 returned date will be in format yyyy-mm-dd default fro 1 pos = null
+    private Date[] borrowDate = new Date[2];//0:stat borrow 1 returned date will be in format yyyy-mm-dd default for 1 pos = null
     
     
     public Borrow (String ID, String studentID, String ISBN, String borrowDate){
@@ -62,9 +54,10 @@ public class Borrow {
         return (int) ((System.currentTimeMillis() - borrowDate[0].getTime())/(1000 * 60 * 60 * 24L));
     }
     
-    public int returnedBook (){
+    public int returnBook (){
+        //set a borrowed book to retourned
+        //returns an int that represents the number of days the loand was
         borrowDate[1] = new Date(System.currentTimeMillis());
         return (int) ((borrowDate[1].getTime() - borrowDate[0].getTime())/(1000 * 60 * 60 * 24L));
-    }
-//    cretae the function to set whe the book is returned
+    }    
 }

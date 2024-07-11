@@ -5,16 +5,19 @@
 package Tester;
 
 import ClassTemplates.Book;
+import ClassTemplates.Borrow;
+import ClassTemplates.Student;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utiler.FileProcessor;
 
+import utiler.FileProcessor;
 /**
  *
  * @author antonh
@@ -54,6 +57,14 @@ public class TesterMain {
         //a = a.toString().concat("k").split("\\w");
         
         System.out.println();
+        ArrayList<Book> books = fp.BookDBLoader(new File("src/DataBase/books.diadb"));
+        ArrayList<Student> students = fp.StudentDBLoader(new File("src/DataBase/students.diadb"));
+        ArrayList<Borrow> borrows = fp.BorrowDBLoader(new File("src/DataBase/borrows.diadb"));
+        
+        for (Borrow b :borrows){
+            System.out.println(b.borrowTime());
+        }
+        
 //        try {
 //            System.out.println(fp.FileLoader0(file));
 //        } catch (FileNotFoundException ex) {
