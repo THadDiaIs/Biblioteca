@@ -8,16 +8,13 @@ import ClassTemplates.Book;
 import ClassTemplates.Borrow;
 import ClassTemplates.Student;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
+import utiler.DataProcessor;
 
 import utiler.FileProcessor;
+import utiler.Filters;
 /**
  *
  * @author antonh
@@ -61,8 +58,9 @@ public class TesterMain {
         ArrayList<Student> students = fp.StudentDBLoader(new File("src/DataBase/students.diadb"));
         ArrayList<Borrow> borrows = fp.BorrowDBLoader(new File("src/DataBase/borrows.diadb"));
         
-        for (Borrow b :borrows){
-            System.out.println(b.borrowTime());
+        for (int i = 0; i < borrows.size(); i++){
+            System.out.println(borrows.get(i).getISBN());
+            System.out.println(books.get(i).getISBN());
         }
         
 //        try {
@@ -70,6 +68,26 @@ public class TesterMain {
 //        } catch (FileNotFoundException ex) {
 //            Logger.getLogger(TesterMain.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+
+        DataProcessor dataProc = new DataProcessor(students, borrows, books, 8, 10);
+        Filters flt = new Filters();
+        
+        List<Borrow> fBorrows = flt.filterBooks("ac", borrows, 3);
+        System.out.println(fBorrows.size());
+        fBorrows = flt.filterBooks("et", borrows, 3);
+        System.out.println(fBorrows.size());
+        fBorrows = flt.filterBooks("e", borrows, 3);
+        System.out.println(fBorrows.size());
+        fBorrows = flt.filterBooks("all", borrows, 3);
+        System.out.println(fBorrows.size());
+        
+        List<Borrow> res = flt.getBorrow("lmnopqrstuv", borrows);
+        System.out.println(res.getFirst().getISBN());
+        
+        LocalDate tDate = LocalDate.of(2024,03,03);
+        System.out.println(tDate.toString());
+        System.out.println(tDate);
+        System.out.println(LocalDate.now());
     }
     
 }

@@ -42,13 +42,10 @@ public class GitPratice {
 //        scrollPane.add(table);
 //        
 //        rootWind.add(scrollPane);
-
         try {
-            /* Create and display the form */
-            rootWind.SetDataBase(students, borrows, books);
-
+            rootWind.setDataBase(students, borrows, books, 8, 10);
             rootWind.loadOverview();
-            rootWind.loadBorrows(false);
+            rootWind.loadBorrows("a");
             java.awt.EventQueue.invokeAndWait(() -> {
                 rootWind.setVisible(true);
             });

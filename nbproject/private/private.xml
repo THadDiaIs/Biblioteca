@@ -5,9 +5,9 @@
         <group>
             <file>file:/home/antonh/Documents/Biblioteca/src/utiler/DataProcessor.java</file>
             <file>file:/home/antonh/Documents/Biblioteca/src/gui/MainGui.java</file>
-            <file>file:/home/antonh/Documents/Biblioteca/src/gui/NewBorrow.java</file>
-            <file>file:/home/antonh/Documents/Biblioteca/src/ClassTemplates/Borrow.java</file>
             <file>file:/home/antonh/Documents/Biblioteca/src/gitpratice/GitPratice.java</file>
+            <file>file:/home/antonh/Documents/Biblioteca/src/utiler/Filters.java</file>
+            <file>file:/home/antonh/Documents/Biblioteca/src/Tester/TesterMain.java</file>
         </group>
     </open-files>
 </project-private>

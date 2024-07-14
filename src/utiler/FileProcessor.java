@@ -85,10 +85,10 @@ public class FileProcessor {
         while (scanner.hasNext()) {
             String firstLine = scanner.nextLine();
             if (firstLine.length() > 1) {
-                tmp[0] = firstLine.split(":").length > 1 ? firstLine.split(":")[1] : "DataEntryError";
+                tmp[0] = firstLine.split(":").length > 1 ? firstLine.split(":")[1].strip() : "DataEntryError";
                 for (int i = 1; i < tmp.length; i++) {
                     String[] currLine = scanner.nextLine().split(":");
-                    tmp[i] = currLine.length > 1 ? currLine[1] : "DataEntryError";
+                    tmp[i] = currLine.length > 1 ? currLine[1].strip() : "DataEntryError";
                 }
                 books.add(new Book(tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]));
             }
@@ -160,11 +160,13 @@ public class FileProcessor {
                 tmp[0] = firstLine.split(":").length > 1 ? firstLine.split(":")[1] : "DataEntryError";
                 for (int i = 1; i < tmp.length; i++) {
                     String[] currLine = scanner.nextLine().split(":");
-                    tmp[i] = currLine.length > 1 ? currLine[1] : "DataEntryError";
+                    tmp[i] = currLine.length > 1 ? currLine[1].strip() : "DataEntryError";
                 }
                 borrows.add(new Borrow(tmp[0], tmp[1], tmp[2], tmp[3]));
             }
         }
         return borrows;
     }
+    
+    
 }

@@ -53,7 +53,7 @@ STOCK: 10
 
 
 NAME: One Hundred Years of Solitude
-CODE: [ISBN not provided]
+CODE: 9780399590351
 AUTHOR: Gabriel García Márquez
 EDITORIAL: Harper Perennial Modern Classics
 EDITION: Reissue
@@ -214,39 +214,12 @@ STOCK: 37
 
 
 
-NAME: The Adventures of Huckleberry Finn
-CODE: 9780486280615
-AUTHOR: Mark Twain
-EDITORIAL: Dover Publications
-EDITION: Unabridged
-STOCK: 59
-
-
-
 NAME: The Stranger
 CODE: 9780679720201
 AUTHOR: Albert Camus
 EDITORIAL: Vintage International
 EDITION: Reissue
 STOCK: 52
-
-
-
-NAME: The Lord of the Rings
-CODE: 9780618640157
-AUTHOR: J.R.R. Tolkien
-EDITORIAL: Mariner Books
-EDITION: Revised
-STOCK: 44
-
-
-
-NAME: Crime and Punishment
-CODE: 9780140449136
-AUTHOR: Fyodor Dostoevsky
-EDITORIAL: Penguin Classics
-EDITION: Reissue
-STOCK: 87
 
 
 
@@ -383,11 +356,3 @@ EDITORIAL: Dover Publications
 EDITION: Unabridged
 STOCK: 27
 
-
-
-NAME: The Stranger
-CODE: 9780679720201
-AUTHOR: Albert Camus
-EDITORIAL: Vintage International
-EDITION: Reissue
-STOCK: 51
