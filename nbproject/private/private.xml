@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/antonh/Documents/Biblioteca/src/utiler/DataProcessor.java</file>
-            <file>file:/home/antonh/Documents/Biblioteca/src/gui/MainGui.java</file>
-            <file>file:/home/antonh/Documents/Biblioteca/src/gitpratice/GitPratice.java</file>
-            <file>file:/home/antonh/Documents/Biblioteca/src/utiler/Filters.java</file>
-            <file>file:/home/antonh/Documents/Biblioteca/src/Tester/TesterMain.java</file>
+            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Main/BibliotecaMain.java</file>
+            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Test/TesterMain.java</file>
+            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Gui/MainGui.java</file>
+            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Models/Student.java</file>
+            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Utils/DataSaver.java</file>
+            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Utils/DataProcessor.java</file>
+            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Utils/Filters.java</file>
         </group>
     </open-files>
 </project-private>
