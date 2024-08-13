@@ -1,7 +1,7 @@
 package Gui;
 
 import Models.Book;
-import Models.Borrow;
+import Models.Loan;
 import Models.Student;
 import java.util.HashMap;
 import java.util.List;
@@ -17,21 +17,18 @@ import javax.swing.JOptionPane;
 public class MainGui extends javax.swing.JFrame {
 
     private DataProcessor dataProc;
-    private int daysPerBorrow = 0;
-    private double dailyFee = 0.0;
+    private HashMap<String, Double> systemConfig;
 
     /**
      * Creates new form MainGui
      */
     public MainGui() {
         initComponents();
-
     }
 
-    public void setDataBase(List<Student> students, List<Borrow> borrows, List<Book> books, int daysPerBorrow, double dailyFee) {
-        this.dataProc = new DataProcessor(students, borrows, books, daysPerBorrow, dailyFee);
-        this.dailyFee = dailyFee;
-        this.daysPerBorrow = daysPerBorrow;
+    public void setDataBase(List<Student> students, List<Loan> borrows, List<Book> books, HashMap systemConfig) {
+        this.dataProc = new DataProcessor(students, borrows, books, systemConfig);
+        this.systemConfig = systemConfig;
     }
 
     /**
@@ -105,6 +102,7 @@ public class MainGui extends javax.swing.JFrame {
         endBorrowDate = new javax.swing.JLabel();
         borrowResult = new javax.swing.JLabel();
         bookAuthor = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         book = new javax.swing.JPanel();
         bookContainer = new javax.swing.JScrollPane();
         booksTable = new javax.swing.JTable();
@@ -148,12 +146,12 @@ public class MainGui extends javax.swing.JFrame {
         newStuName = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        newStuDeg = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         newStuIdCard = new javax.swing.JTextField();
         saveNewStu = new javax.swing.JButton();
         reloadStuCode = new javax.swing.JButton();
         newStuDob = new javax.swing.JFormattedTextField();
+        newStuDeg = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -431,7 +429,7 @@ public class MainGui extends javax.swing.JFrame {
 
         jLabel16.setText("Duration:");
 
-        jLabel17.setText("% rate:");
+        jLabel17.setText("Daily fees: ");
 
         duration.setText("000");
 
@@ -534,6 +532,13 @@ public class MainGui extends javax.swing.JFrame {
 
         bookAuthor.setText("Book Author");
 
+        jButton1.setText("R");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
         detailsPanel.setLayout(detailsPanelLayout);
         detailsPanelLayout.setHorizontalGroup(
@@ -565,7 +570,9 @@ public class MainGui extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(endBorrowDate))
                             .addComponent(bookAuthor))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         detailsPanelLayout.setVerticalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -582,7 +589,7 @@ public class MainGui extends javax.swing.JFrame {
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(bookCode))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(bookName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bookAuthor)
@@ -591,12 +598,15 @@ public class MainGui extends javax.swing.JFrame {
                     .addComponent(jLabel23)
                     .addComponent(borrowResult))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(startBorrowDate)
-                    .addComponent(jLabel26)
-                    .addComponent(endBorrowDate)
-                    .addComponent(jLabel24))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(detailsPanelLayout.createSequentialGroup()
+                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(startBorrowDate)
+                            .addComponent(jLabel26)
+                            .addComponent(endBorrowDate)
+                            .addComponent(jLabel24))
+                        .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout borrowLayout = new javax.swing.GroupLayout(borrow);
@@ -639,7 +649,7 @@ public class MainGui extends javax.swing.JFrame {
                 .addGroup(borrowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(detailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         container.addTab("Loans", borrow);
@@ -941,6 +951,8 @@ public class MainGui extends javax.swing.JFrame {
         newStuDob.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
         newStuDob.setToolTipText("yyyy-MM-dd");
 
+        newStuDeg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Computer Science", "Mechanical Engineering", "Electrical Engineering", "Mathematics", "Physics", "Chemistry", "Biology", "Economics", "Psychology", "History" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -956,13 +968,13 @@ public class MainGui extends javax.swing.JFrame {
                             .addComponent(jLabel27))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newStuDeg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                            .addComponent(newStuName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newStuName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(newStuIdCard, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(reloadStuCode))
-                            .addComponent(newStuDob)))
+                            .addComponent(newStuDob)
+                            .addComponent(newStuDeg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(saveNewStu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(58, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -1288,18 +1300,21 @@ public class MainGui extends javax.swing.JFrame {
     }//GEN-LAST:event_stuTableMouseClicked
 
     private void saveNewStuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveNewStuMouseClicked
-        if (this.newStuIdCard.getText().length() == 8
+        if (this.newStuIdCard.getText().length() >= 8
             && this.newStuName.getText().length() > 3
-            && this.newStuDeg.getText().length() > 8
             && this.newStuDob.getText().length() == 10 ) {
             Student newStu = new Student(
                 this.newStuIdCard.getText(),
                 this.newStuName.getText(),
-                this.newStuDeg.getText(),
+                this.newStuDeg.getSelectedItem().toString(),
                 this.newStuDob.getText());
             if (JOptionPane.showConfirmDialog(this, "\nSure to save\nthis student?\n") == 0){
-                System.out.println(newStu.toString());
-                //if result -> reset fields
+                JOptionPane.showMessageDialog(this, this.dataProc.saveStdent(newStu));
+                this.newStuIdCard.setText("");
+                this.newStuName.setText("");
+                this.newStuDeg.setSelectedIndex(0);
+                this.newStuDob.setText("");
+                this.load();
             }
         } else {
             JOptionPane.showMessageDialog(this, "\nFullfill all the fields to proceed!\n");
@@ -1310,6 +1325,10 @@ public class MainGui extends javax.swing.JFrame {
     private void reloadStuCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reloadStuCodeMouseClicked
         this.setNewStuCode();
     }//GEN-LAST:event_reloadStuCodeMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println("returning a book");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void load() {
         this.loadOverview();
@@ -1378,8 +1397,8 @@ public class MainGui extends javax.swing.JFrame {
         this.bookComboBox.setModel(newBorrowModels[0]);
         this.stuComboBox.setModel(newBorrowModels[1]);
 
-        this.dailyCost.setText(String.valueOf(this.dailyFee));
-        this.duration.setText(String.valueOf(this.daysPerBorrow));
+        this.dailyCost.setText(String.valueOf(this.systemConfig.get("fees")));
+        this.duration.setText(String.valueOf(this.systemConfig.get("days_per_book")));
 
     }
 
@@ -1471,6 +1490,7 @@ public class MainGui extends javax.swing.JFrame {
     private javax.swing.JRadioButton fltrStuByDeg;
     private javax.swing.JRadioButton fltrStuByName;
     private javax.swing.JRadioButton inactiveStudents;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -1518,7 +1538,7 @@ public class MainGui extends javax.swing.JFrame {
     private javax.swing.JTextField newBookEditorial;
     private javax.swing.JTextField newBookStock;
     private javax.swing.JTextField newBookTitle;
-    private javax.swing.JTextField newStuDeg;
+    private javax.swing.JComboBox<String> newStuDeg;
     private javax.swing.JFormattedTextField newStuDob;
     private javax.swing.JTextField newStuIdCard;
     private javax.swing.JTextField newStuName;

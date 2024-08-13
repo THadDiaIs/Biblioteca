@@ -1,20 +1,23 @@
 package Models;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class Borrow {
+public class Loan {
 
     private String ID;
     private String studentID;
     private String ISBN;
     private LocalDate[] borrowDate = new LocalDate[2];//0:stat borrow 1 returned date will be in format yyyy-mm-dd default for 1 pos = null
+    private BigDecimal appliedFee;
 
-    public Borrow(String ID, String studentID, String ISBN, String borrowDate) {
+    public Loan(String ID, String studentID, String ISBN, String borrowDate, String appliedFee) {
         this.ID = ID;
         this.studentID = studentID;
         this.ISBN = ISBN; //string to long
         this.setDate(borrowDate);
+        this.appliedFee = new BigDecimal(appliedFee);
     }
 
     private void setDate(String dob) {
@@ -45,6 +48,14 @@ public class Borrow {
         return ISBN;
     }
 
+    public BigDecimal getAppliedFee() {
+        return appliedFee;
+    }
+
+    public void setAppliedFee(BigDecimal appliedFee) {
+        this.appliedFee = appliedFee;
+    }
+    
     public int borrowTime() {
         //return int of days of the borrow
         if (borrowDate[1] != null) {
@@ -65,7 +76,7 @@ public class Borrow {
     @Override
     public String toString() {
         String endDate = borrowDate[1] == null ? "7" : borrowDate[1].toString();
-        return "ID:" + ID + "\nSTD_ID:" + studentID + "\nISBN:" + ISBN + "\nB_DATE:" + borrowDate[0].toString()+","+endDate;
+        return "ID:" + ID + "\nSTD_ID:" + studentID + "\nISBN:" + ISBN + "\nB_DATE:" + borrowDate[0].toString()+","+endDate+ "\nAPPLIED_FEE:" + appliedFee;
     }
 
 }

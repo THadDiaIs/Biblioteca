@@ -1,7 +1,7 @@
 package Utils;
 
 import Models.Book;
-import Models.Borrow;
+import Models.Loan;
 import Models.Student;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  */
 public class Filters {
 
-    public List<Borrow> filterBorrows(String filter, List<Borrow> borrows, int expTime) {
+    public List<Loan> filterBorrows(String filter, List<Loan> borrows, int expTime) {
         switch (filter) {
             case "ac"-> {
                 return borrows.stream().filter( b -> b.getBorrowDate()[1] == null).collect(Collectors.toList());
@@ -32,7 +32,7 @@ public class Filters {
         return borrows;
     }
     
-    public List<Borrow> getBorrow(String code, List<Borrow> borrows){
+    public List<Loan> getBorrow(String code, List<Loan> borrows){
         return borrows
                 .stream()
                 .filter(b -> b.getID().equals(code))
@@ -53,19 +53,19 @@ public class Filters {
                 .collect(Collectors.toList());
     }
     
-    public int getActiveBorrowsOf(String stuCode, List<Borrow> allBorrows){
+    public int getActiveBorrowsOf(String stuCode, List<Loan> allBorrows){
         return allBorrows.stream()
                 .filter( br -> br.getBorrowDate()[1] == null && br.getStudentID().equals(stuCode))
                 .collect(Collectors.toList()).size();
     }
     
-    public int getBorrowsOf(String stuCode, List<Borrow> allBorrows){
+    public int getBorrowsOf(String stuCode, List<Loan> allBorrows){
         return allBorrows.stream()
                 .filter( br ->  br.getStudentID().equals(stuCode))
                 .collect(Collectors.toList()).size();
     }
     
-    public int getBorrowedBooks(String code, List<Borrow> allBorrows){
+    public int getBorrowedBooks(String code, List<Loan> allBorrows){
         return allBorrows.stream()
                 .filter( br -> br.getBorrowDate()[1] == null && br.getISBN().equals(code))
                 .collect(Collectors.toList()).size();
@@ -110,7 +110,7 @@ public class Filters {
                 .filter(s -> s.getDegree().toLowerCase(Locale.ROOT).contains(filter.toLowerCase(Locale.ROOT)))
                 .collect(Collectors.toList());
     }
-    public List<Student> filterStudentsByStatus(List<Student> students, List<Borrow> borrows, boolean actives) {
+    public List<Student> filterStudentsByStatus(List<Student> students, List<Loan> borrows, boolean actives) {
         //for actives-inactives
         List<String> stuCodes = new ArrayList<>();
         List<Student> stuActives = new ArrayList<>();

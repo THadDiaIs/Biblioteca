@@ -1,21 +1,20 @@
 package Test;
 
 import Models.Book;
-import Models.Borrow;
+import Models.Loan;
 import Models.Student;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import Utils.DataProcessor;
 import Utils.DataLoader;
 import Utils.DataSaver;
 import Utils.Filters;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.JDialog;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.HashMap;
+import java.util.Random;
 
 /**
  *
@@ -26,7 +25,8 @@ public class TesterMain {
     /**
      * @param args the command line arguments,
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Random rnd = new Random();
 
         //       System.out.println(borrow0.borrowTime());
 //       System.out.println(borrow0.getBorrowDate()[0]);
@@ -42,8 +42,8 @@ public class TesterMain {
         //System.out.println(date);
         // TODO code application logic here
         DataLoader fp = new DataLoader();
-        Filters fltr = new Filters();
 
+        Filters fltr = new Filters();
 //        ArrayList<Book> books = fp.BookDBLoader(new File("src/DataBase/books.txt"));
 //        
 //        System.out.println(books.size());
@@ -56,32 +56,46 @@ public class TesterMain {
         System.out.println();
         ArrayList<Book> books = fp.BookDBLoader(new File("src/Data/books.diadb"));
         ArrayList<Student> students = fp.StudentDBLoader(new File("src/Data/students.diadb"));
-        ArrayList<Borrow> borrows = fp.BorrowDBLoader(new File("src/Data/borrows.diadb"));
+        ArrayList<Loan> borrows = fp.BorrowDBLoader(new File("src/Data/borrows.diadb"));
+        HashMap<String, Double> systemConfig = fp.loadConf(new File("src/Data/biblio.conf"));
 
+        DataProcessor dtPr = new DataProcessor(students, borrows, books, systemConfig);
+        for (int i = 0; i < borrows.size(); i++) {
+            borrows.get(i).setAppliedFee(new BigDecimal(String.valueOf(rnd.nextDouble(10,15))).setScale(2, RoundingMode.CEILING));
+        }
         for (int i = 0; i < borrows.size(); i++) {
             System.out.println(borrows.get(i).toString());
             System.out.println("-------");
         }
-        for (int i = 0; i < books.size(); i++) {
-            System.out.println(books.get(i).toString());
-            System.out.println("-------");
-            /*System.out.println(students.get(i).toString());
-            System.out.println("\n\n\n");*/
+        for (var conf : systemConfig.keySet()) {
+            System.out.println(conf + " " + systemConfig.get(conf));
         }
-        for (int i = 0; i < students.size(); i++) {
-            System.out.println(students.get(i).toString());
-            System.out.println("-------");
-        }
+        //DataSaver dts = new DataSaver();
+        //try {
+        //    dts.persistBorrows(borrows);
+            //for (int i = 0; i < books.size(); i++) {
+            //    System.out.println(books.get(i).toString());
+            //    System.out.println("-------");
+            //    /*System.out.println(students.get(i).toString());
+            //    System.out.println("\n\n\n");*/
+            //}
+            //for (int i = 0; i < students.size(); i++) {
+            //    System.out.println(students.get(i).toString());
+            //    System.out.println("-------");
+            //}
 //        try {
 //            System.out.println(fp.FileLoader0(file));
 //        } catch (FileNotFoundException ex) {
 //            Logger.getLogger(TesterMain.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-
-        /*DataProcessor dataProc = new DataProcessor(students, borrows, books, 8, 10);
+        //} catch (IOException ex) {
+        //    Logger.getLogger(TesterMain.class.getName()).log(Level.SEVERE, null, ex);
+        //}
+        
+        //DataProcessor dataProc = new DataProcessor(students, borrows, books, 8, 10);
         Filters flt = new Filters();
         
-        List<Borrow> fBorrows = flt.filterBooks("ac", borrows, 3);
+        /*List<Borrow> fBorrows = flt.filterBooks("ac", borrows, 3);
         System.out.println(fBorrows.size());
         fBorrows = flt.filterBooks("et", borrows, 3);
         System.out.println(fBorrows.size());
@@ -95,10 +109,10 @@ public class TesterMain {
         System.out.println(tDate.toString());
         System.out.println(tDate);
         System.out.println(LocalDate.now());*/
- /*DataSaver dts = new DataSaver();
-        Book newBook = new Book("Bible", "09809f094j", "GOD", "Phrophets", "unique", "300");
-        Borrow newBr = new Borrow("89uoj4efd", "007", "9780374528379", "2024-06-13,9");
-        Borrow newBr1 = new Borrow("ni875fdGR", "004", "9780374528379", "2024-07-02,3");
+ DataSaver dts = new DataSaver();
+        /*Book newBook = new Book("Bible", "09809f094j", "GOD", "Phrophets", "unique", "300");
+        Loan newBr = new Loan("89uoj4efd", "007", "9780374528379", "2024-06-13,9");
+        Loan newBr1 = new Loan("ni875fdGR", "004", "9780374528379", "2024-07-02,3");
         books.add(newBook);
         borrows.add(newBr);
         borrows.add(newBr1);*/
@@ -114,6 +128,7 @@ public class TesterMain {
         dd = dd.length() < 2 ? 0+dd : dd;
         mm = mm.length() < 2 ? 0+mm : mm;
         System.out.println(dd+mm+yy.substring(2));
+        dts.UpdateConf(systemConfig);
         //System.out.println(JOptionPane.showConfirmDialog(null, "testing msg", "asking", JOptionPane.YES_NO_OPTION));
     }
 

@@ -1,21 +1,19 @@
 package Utils;
 
 import Models.Student;
-import Models.Borrow;
+import Models.Loan;
 import Models.Book;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
 
 /**
  *
@@ -60,13 +58,12 @@ public class DataLoader {
         return scan;
     }
 
-    private List<String> FileLoader(File file) throws FileNotFoundException {
+    /*private List<String> FileLoader(File file) throws FileNotFoundException {
 //        read a file and return an list of strings of the entire file
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         return br.lines().toList();
-    }
-
+    }*/
     public ArrayList<Book> BookDBLoader(File file) {
 //        cpnvert the entire file to a book array
         ArrayList<Book> books = new ArrayList<>();
@@ -139,10 +136,10 @@ public class DataLoader {
         return students;
     }
 
-    public ArrayList<Borrow> BorrowDBLoader(File file) {
+    public ArrayList<Loan> BorrowDBLoader(File file) {
 //        cpnvert the entire file to a book array
-        String[] tmp = new String[4];
-        ArrayList<Borrow> borrows = new ArrayList<>();
+        String[] tmp = new String[5];
+        ArrayList<Loan> borrows = new ArrayList<>();
         Scanner scanner = null;
 
         try {
@@ -160,11 +157,29 @@ public class DataLoader {
                     String[] currLine = scanner.nextLine().split(":");
                     tmp[i] = currLine.length > 1 ? currLine[1].strip() : "DataEntryError";
                 }
-                borrows.add(new Borrow(tmp[0], tmp[1], tmp[2], tmp[3]));
+                borrows.add(new Loan(tmp[0], tmp[1], tmp[2], tmp[3], tmp[4]));
             }
         }
         return borrows;
     }
-    
-    
+
+    public HashMap<String, Double> loadConf(File confFile) {
+        HashMap conf = new HashMap();
+        try {
+            Scanner scan = FileLoader(confFile, "Configuration file");
+            conf.put("days_per_book", Double.valueOf(scan.nextLine().split("=")[1]));
+            conf.put("fees", Double.valueOf(scan.nextLine().split("=")[1]));
+        } catch (InterruptedException | InvocationTargetException ex) {
+            //Logger.getLogger(DataLoader.class.getName()).log(Level.SEVERE, null, ex);
+            DataSaver dts = new DataSaver();
+            conf.put("days_per_book", 15.0);
+            conf.put("fees",10.0);
+            try {
+                dts.UpdateConf(conf);
+            } catch (IOException ex1) {
+                Logger.getLogger(DataLoader.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+        return conf;
+    }
 }

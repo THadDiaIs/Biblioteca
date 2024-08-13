@@ -1,16 +1,14 @@
-degrees = {
-    '01': 'Computer Science',
-    '02': 'Mechanical Engineering',
-    '03': 'Electrical Engineering',
-    '04': 'Mathematics',
-    '05': 'Physics',
-    '06': 'Chemistry',
-    '07': 'Biology',
-    '08': 'Economics',
-    '09': 'Psychology',
-    '10': 'History'
-}
-'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    Computer Science
+    Mechanical Engineering
+    Electrical Engineering
+    Mathematics
+    Physics
+    Chemistry
+    Biology
+    Economics
+    Psychology
+    History
+
 
 student_ids = [
     '24A8K5Q1', '24B4N2R9', '24J9V8M2', '24L1Z5X7', '24C3Q7A6', '24R8G4T1', '24D6K2V9',

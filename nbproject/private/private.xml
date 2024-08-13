@@ -5,11 +5,11 @@
         <group>
             <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Main/BibliotecaMain.java</file>
             <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Test/TesterMain.java</file>
+            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Utils/DataLoader.java</file>
             <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Gui/MainGui.java</file>
-            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Models/Student.java</file>
             <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Utils/DataSaver.java</file>
+            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Models/Loan.java</file>
             <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Utils/DataProcessor.java</file>
-            <file>file:/home/ma4rt/Documents/BibliotecaGUI/src/Utils/Filters.java</file>
         </group>
     </open-files>
 </project-private>

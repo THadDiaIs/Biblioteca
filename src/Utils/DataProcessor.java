@@ -1,9 +1,10 @@
 package Utils;
 
 import Models.Book;
-import Models.Borrow;
+import Models.Loan;
 import Models.Student;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +12,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -19,20 +19,17 @@ import javax.swing.table.TableModel;
 public final class DataProcessor {
 
     private List<Student> students;
-    private List<Borrow> borrows;
+    private List<Loan> borrows;
     private List<Book> books;
-    private int daysPerBorrow = 0;
-    private double dailyFee = 0.0;
-    private HashMap statistics;
+    private HashMap statistics, systemConfig;
     private Filters fltr;
     private DataSaver dtSvr = new DataSaver();
 
-    public DataProcessor(List<Student> students, List<Borrow> borrows, List<Book> books, int daysPerBorrow, double dailyFee) {
+    public DataProcessor(List<Student> students, List<Loan> borrows, List<Book> books, HashMap systemConfig) {
         this.students = students;
         this.borrows = borrows;
         this.books = books;
-        this.daysPerBorrow = daysPerBorrow;
-        this.dailyFee = dailyFee;
+        this.systemConfig = systemConfig;
         this.updateStatistics();
         this.fltr = new Filters();
     }
@@ -56,10 +53,10 @@ public final class DataProcessor {
         }
         map.replace("totBook", tmp);
         tmp = 0;
-        for (Borrow b : this.borrows) {
+        for (Loan b : this.borrows) {
             if (b.getBorrowDate()[1] == null) {
                 tmp++;
-                if (b.borrowTime() > this.daysPerBorrow) {
+                if (b.borrowTime() > (double) this.systemConfig.get("days_per_book")) {
                     tmpExp++;
                 }
             }
@@ -75,13 +72,12 @@ public final class DataProcessor {
             "Code", "Book", "Student", "Borrowed Date", "Days", "Fees"
         });
         for (int i = 0; i < this.borrows.size(); i++) {
-            Borrow tmp = this.borrows.get(i);
-            Double tmpPaymnt;
+            Loan tmp = this.borrows.get(i);
             if (tmp.getBorrowDate()[1] != null) {
                 //to select only non returned books
                 continue;
             }
-            tmpPaymnt = tmp.getBorrowDate()[1] == null ? this.dailyFee * tmp.borrowTime() : 0;
+            BigDecimal tmpPaymnt = tmp.getBorrowDate()[1] == null ? tmp.getAppliedFee().multiply(new BigDecimal(tmp.borrowTime())) : new BigDecimal("0.0");
             List<Student> stuBorrw = fltr.getStudent(tmp.getStudentID(), students);
             List<Book> bkBorrw = fltr.getBook(tmp.getISBN(), books);
             data.add(new String[]{tmp.getID(),
@@ -102,11 +98,11 @@ public final class DataProcessor {
         DefaultTableModel dtm = new DefaultTableModel(null, new String[]{
             "Code", "Book", "Student", "Start Date", "End Date", "Days", "Fees"
         });
-        List<Borrow> fBorrows = fltr.filterBorrows(filter, borrows, this.daysPerBorrow);
+        double days_per_book = (double) this.systemConfig.get("days_per_book");
+        List<Loan> fBorrows = fltr.filterBorrows(filter, borrows, Integer.parseInt(Double.toString(days_per_book).split(".0")[0]));
         for (int i = 0; i < fBorrows.size(); i++) {
-            Borrow tmp = fBorrows.get(i);
-            Double tmpPaymnt;
-            tmpPaymnt = tmp.getBorrowDate()[1] == null ? this.dailyFee * tmp.borrowTime() : 0;
+            Loan tmp = fBorrows.get(i);
+            BigDecimal tmpPaymnt = tmp.getBorrowDate()[1] == null ? tmp.getAppliedFee().multiply(new BigDecimal(tmp.borrowTime())) : new BigDecimal("0.0");
             List<Student> stuBorrw = fltr.getStudent(tmp.getStudentID(), students);
             List<Book> bkBorrw = fltr.getBook(tmp.getISBN(), books);
             System.out.println(i + "  " + tmp.getID());
@@ -204,9 +200,9 @@ public final class DataProcessor {
 
     public List<String[]> getBorrowDetails(String code) {
         List<String[]> data = new ArrayList<>();
-        List<Borrow> borrow = fltr.getBorrow(code, borrows);
+        List<Loan> borrow = fltr.getBorrow(code, borrows);
         if (!borrow.isEmpty()) {
-            Borrow br = borrow.getFirst();
+            Loan br = borrow.getFirst();
             Student stu = fltr.getStudent(br.getStudentID(), students).getFirst();
             Book b = fltr.getBook(br.getISBN(), books).getFirst();
             /*System.out.println(br.getID() +" "+ br.getISBN() +" "+ br.getStudentID());
@@ -223,7 +219,7 @@ public final class DataProcessor {
                 br.getBorrowDate()[0].toString(),
                 br.getBorrowDate()[1] == null ? "still" : br.getBorrowDate()[1].toString(),
                 Integer.toString(br.borrowTime()),
-                String.valueOf(this.dailyFee * br.borrowTime())});
+                String.valueOf(br.getAppliedFee().multiply(new BigDecimal(br.borrowTime())))});
         } else {
             System.out.println("no data found");
         }
@@ -262,7 +258,7 @@ public final class DataProcessor {
                 
                 try {
                     LocalDate today = LocalDate.now();
-                    borrows.add(new Borrow(newCode, currStu.getID(), currBook.getCode(), today.toString() + ",5"));
+                    borrows.add(new Loan(newCode, currStu.getID(), currBook.getCode(), today.toString() + ",5", this.systemConfig.get("fees").toString()));
                     dtSvr.persistBorrows(borrows);
                 } catch (IOException ex) {
                     borrows.removeLast();
@@ -275,12 +271,12 @@ public final class DataProcessor {
             return currStu.getName() + "\nhas reached the max-limit of\nallowed books";
         }
         return currStu.getName() + "\n" + currBook.getName()
-                + "\ndaily fee: " + this.dailyFee
+                + "\ndaily fee: " + this.systemConfig.get("fees").toString()
                 + "\nregistred successfull";
     }
 
     public Double returnABook(String borrowCode) {
-        Borrow toReturn = fltr.getBorrow(borrowCode, borrows).getFirst();
+        Loan toReturn = fltr.getBorrow(borrowCode, borrows).getFirst();
         int result = toReturn.returnBook();
         borrows.set(borrows.indexOf(toReturn), toReturn);
         try {
@@ -288,7 +284,7 @@ public final class DataProcessor {
         } catch (IOException ex) {
             Logger.getLogger(DataProcessor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return result * dailyFee;
+        return result * (double) this.systemConfig.get("fees");
     }
 
     public String saveBook(Book newBook) {
@@ -325,5 +321,24 @@ public final class DataProcessor {
         stu.setActiveLoans(loans[1]);
         stu.setAllLoans(loans[0]);
         return stu;
+    }
+    
+    public String saveStdent(Student newStudent) {
+        if (!fltr.getStudent(newStudent.getID(), students).isEmpty()) {
+            return "The desired student alaready exist\n";
+        } else if (!fltr.filterStudentsByName(newStudent.getName(), students).isEmpty()
+                && !fltr.filterStudentsByDeg(newStudent.getDegree(), students).isEmpty()) {
+            return "It seems that some data you provided is duplicated.";
+        } else {
+            try {
+                students.add(newStudent);
+                dtSvr.persistStudents(students);
+            } catch (IOException ex) {
+                students.removeLast();
+                return "Fail, Not Saved\nTry again later!";
+                //Logger.getLogger(DataProcessor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return "Registred sucessfull: \n" + newStudent.getName()+"\n"+newStudent.getID();
     }
 }

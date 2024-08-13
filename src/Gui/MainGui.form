@@ -422,7 +422,7 @@
                           <Component id="detailsPanel" max="32767" attributes="0"/>
                           <Component id="jPanel1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="21" max="32767" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -641,7 +641,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="% rate:"/>
+                    <Property name="text" type="java.lang.String" value="Daily fees: "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="duration">
@@ -686,7 +686,7 @@
                                   <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -715,6 +715,8 @@
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -735,7 +737,7 @@
                               <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="bookCode" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="bookName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="bookAuthor" min="-2" max="-2" attributes="0"/>
@@ -745,13 +747,18 @@
                               <Component id="borrowResult" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="startBorrowDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="endBorrowDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="startBorrowDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="endBorrowDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jButton1" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -835,6 +842,14 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Book Author"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="R"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1339,14 +1354,14 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="newStuDeg" alignment="1" pref="234" max="32767" attributes="0"/>
-                                      <Component id="newStuName" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="newStuName" alignment="1" pref="234" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="newStuIdCard" min="-2" pref="120" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="reloadStuCode" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="newStuDob" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="newStuDeg" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="saveNewStu" min="-2" max="-2" attributes="0"/>
@@ -1416,8 +1431,6 @@
                     <Property name="text" type="java.lang.String" value="Deg."/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="newStuDeg">
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel33">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="ID Card:"/>
@@ -1457,6 +1470,27 @@
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value="yyyy-MM-dd"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="newStuDeg">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="10">
+                        <StringItem index="0" value="Computer Science"/>
+                        <StringItem index="1" value="Mechanical Engineering"/>
+                        <StringItem index="2" value="Electrical Engineering"/>
+                        <StringItem index="3" value="Mathematics"/>
+                        <StringItem index="4" value="Physics"/>
+                        <StringItem index="5" value="Chemistry"/>
+                        <StringItem index="6" value="Biology"/>
+                        <StringItem index="7" value="Economics"/>
+                        <StringItem index="8" value="Psychology"/>
+                        <StringItem index="9" value="History"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
