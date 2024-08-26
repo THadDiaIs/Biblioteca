@@ -1,0 +1,153 @@
+adminMain.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        javax.swing.GroupLayout adminLoansLayout = new javax.swing.GroupLayout(adminLoans);
+        adminLoans.setLayout(adminLoansLayout);
+        adminLoansLayout.setHorizontalGroup(
+            adminLoansLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+        );
+        adminLoansLayout.setVerticalGroup(
+            adminLoansLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+
+        adminMain.addTab("Loans", adminLoans);
+
+        javax.swing.GroupLayout adminBooksLayout = new javax.swing.GroupLayout(adminBooks);
+        adminBooks.setLayout(adminBooksLayout);
+        adminBooksLayout.setHorizontalGroup(
+            adminBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+        );
+        adminBooksLayout.setVerticalGroup(
+            adminBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+
+        adminMain.addTab("Books", adminBooks);
+
+        javax.swing.GroupLayout adminStudentsLayout = new javax.swing.GroupLayout(adminStudents);
+        adminStudents.setLayout(adminStudentsLayout);
+        adminStudentsLayout.setHorizontalGroup(
+            adminStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+        );
+        adminStudentsLayout.setVerticalGroup(
+            adminStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+
+        adminMain.addTab("Students", adminStudents);
+
+        javax.swing.GroupLayout adminConfigLayout = new javax.swing.GroupLayout(adminConfig);
+        adminConfig.setLayout(adminConfigLayout);
+        adminConfigLayout.setHorizontalGroup(
+            adminConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+        );
+        adminConfigLayout.setVerticalGroup(
+            adminConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+
+        adminMain.addTab("Config.", adminConfig);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(adminMain, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(adminMain)
+        );
+
+
+
+
+
+
+
+
+
+
+
+
+adminPassLayout.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Please Enter Admin Password", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        enterPass.setText("Enter");
+        enterPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enterPassActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout adminPassLayoutLayout = new javax.swing.GroupLayout(adminPassLayout);
+        adminPassLayout.setLayout(adminPassLayoutLayout);
+        adminPassLayoutLayout.setHorizontalGroup(
+            adminPassLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminPassLayoutLayout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(enterPass)
+                .addGap(47, 47, 47))
+        );
+        adminPassLayoutLayout.setVerticalGroup(
+            adminPassLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminPassLayoutLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(adminPassLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enterPass, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51))
+        );
+
+        javax.swing.GroupLayout adminLayout = new javax.swing.GroupLayout(admin);
+        admin.setLayout(adminLayout);
+        adminLayout.setHorizontalGroup(
+            adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(adminPassLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(240, Short.MAX_VALUE))
+        );
+        adminLayout.setVerticalGroup(
+            adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(253, 253, 253)
+                .addComponent(adminPassLayout, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(261, Short.MAX_VALUE))
+        );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+admin = new javax.swing.JPanel();
+        adminPassLayout = new javax.swing.JPanel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        enterPass = new javax.swing.JButton();
+
+        adminMain = new javax.swing.JTabbedPane();
+        adminLoans = new javax.swing.JPanel();
+        adminBooks = new javax.swing.JPanel();
+        adminStudents = new javax.swing.JPanel();
+        adminConfig = new javax.swing.JPanel();

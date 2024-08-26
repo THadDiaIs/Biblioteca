@@ -181,7 +181,7 @@ public final class DataProcessor {
                 filteredStudents = fltr.filterStudentsByDeg(filterCriteria, filteredStudents);
             }
         }
-        System.out.println("by -> "+filterBy);
+        System.out.println("by -> " + filterBy);
         System.out.println("t-F -> " + filteredStudents.size());
         for (int i = 0; i < filteredStudents.size(); i++) {
             Student tmp = filteredStudents.get(i);
@@ -205,9 +205,6 @@ public final class DataProcessor {
             Loan br = borrow.getFirst();
             Student stu = fltr.getStudent(br.getStudentID(), students).getFirst();
             Book b = fltr.getBook(br.getISBN(), books).getFirst();
-            /*System.out.println(br.getID() +" "+ br.getISBN() +" "+ br.getStudentID());
-            System.out.println(stu.getID()+" "+stu.getName()+" "+stu.getDob());
-            System.out.println(b.getISBN()+" "+b.getName()+" "+b.getAuthor()+"\n");*/
             data.add(new String[]{
                 stu.getID(),
                 stu.getName()});
@@ -254,8 +251,8 @@ public final class DataProcessor {
                 String yy = Integer.toString(LocalDate.now().getYear());
                 dd = dd.length() < 2 ? 0 + dd : dd;
                 mm = mm.length() < 2 ? 0 + mm : mm;
-                newCode += dd+mm+yy.substring(2);
-                
+                newCode += dd + mm + yy.substring(2);
+
                 try {
                     LocalDate today = LocalDate.now();
                     borrows.add(new Loan(newCode, currStu.getID(), currBook.getCode(), today.toString() + ",5", this.systemConfig.get("fees").toString()));
@@ -322,7 +319,7 @@ public final class DataProcessor {
         stu.setAllLoans(loans[0]);
         return stu;
     }
-    
+
     public String saveStdent(Student newStudent) {
         if (!fltr.getStudent(newStudent.getID(), students).isEmpty()) {
             return "The desired student alaready exist\n";
@@ -339,6 +336,6 @@ public final class DataProcessor {
                 //Logger.getLogger(DataProcessor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return "Registred sucessfull: \n" + newStudent.getName()+"\n"+newStudent.getID();
+        return "Registred sucessfull: \n" + newStudent.getName() + "\n" + newStudent.getID();
     }
 }

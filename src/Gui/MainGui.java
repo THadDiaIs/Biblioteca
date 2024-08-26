@@ -9,6 +9,8 @@ import javax.swing.DefaultComboBoxModel;
 import Utils.DataProcessor;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 /**
  *
@@ -44,7 +46,6 @@ public class MainGui extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
-        jComboBox1 = new javax.swing.JComboBox<>();
         container = new javax.swing.JTabbedPane();
         overview = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
@@ -166,9 +167,11 @@ public class MainGui extends javax.swing.JFrame {
         activeStuLoans = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         allStuLoans = new javax.swing.JLabel();
-        Conta = new javax.swing.JPanel();
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        adminstrator = new javax.swing.JTabbedPane();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Library");
@@ -181,6 +184,11 @@ public class MainGui extends javax.swing.JFrame {
         container.setMaximumSize(new java.awt.Dimension(800, 700));
         container.setMinimumSize(new java.awt.Dimension(800, 700));
         container.setPreferredSize(new java.awt.Dimension(800, 700));
+        container.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                containerStateChanged(evt);
+            }
+        });
 
         overview.setMaximumSize(new java.awt.Dimension(800, 700));
         overview.setMinimumSize(new java.awt.Dimension(800, 700));
@@ -440,31 +448,30 @@ public class MainGui extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(saveNewBorrow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel15)
+                                .addComponent(jLabel14))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel16)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(duration)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel17)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(dailyCost))
+                                .addComponent(stuComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(saveNewBorrow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel14))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(duration)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel17)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dailyCost))
-                                    .addComponent(stuComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
+                        .addGap(136, 136, 136)
                         .addComponent(jLabel13)))
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -501,7 +508,7 @@ public class MainGui extends javax.swing.JFrame {
 
         detailsPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel8.setText("Details:");
+        jLabel8.setText("Loan Details:");
 
         jLabel9.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         jLabel9.setText("Student:");
@@ -532,7 +539,7 @@ public class MainGui extends javax.swing.JFrame {
 
         bookAuthor.setText("Book Author");
 
-        jButton1.setText("R");
+        jButton1.setText("Return");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -544,19 +551,20 @@ public class MainGui extends javax.swing.JFrame {
         detailsPanelLayout.setHorizontalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsPanelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel20)
+                        .addComponent(jLabel23))
+                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jLabel8))
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel20)
-                                .addComponent(jLabel23))
-                            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(stuName)
                             .addComponent(bookName)
@@ -569,16 +577,17 @@ public class MainGui extends javax.swing.JFrame {
                                 .addComponent(jLabel26)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(endBorrowDate))
-                            .addComponent(bookAuthor))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                            .addComponent(bookAuthor))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         detailsPanelLayout.setVerticalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsPanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel8)
+                .addGap(8, 8, 8)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -598,15 +607,12 @@ public class MainGui extends javax.swing.JFrame {
                     .addComponent(jLabel23)
                     .addComponent(borrowResult))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(startBorrowDate)
-                            .addComponent(jLabel26)
-                            .addComponent(endBorrowDate)
-                            .addComponent(jLabel24))
-                        .addContainerGap(15, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startBorrowDate)
+                    .addComponent(jLabel26)
+                    .addComponent(endBorrowDate)
+                    .addComponent(jLabel24))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout borrowLayout = new javax.swing.GroupLayout(borrow);
@@ -629,7 +635,7 @@ public class MainGui extends javax.swing.JFrame {
                         .addComponent(expiredBorrow))
                     .addGroup(borrowLayout.createSequentialGroup()
                         .addComponent(detailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -859,6 +865,10 @@ public class MainGui extends javax.swing.JFrame {
         );
 
         container.addTab("Books", book);
+
+        student.setMaximumSize(new java.awt.Dimension(800, 665));
+        student.setMinimumSize(new java.awt.Dimension(800, 665));
+        student.setName(""); // NOI18N
 
         stuTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1158,18 +1168,62 @@ public class MainGui extends javax.swing.JFrame {
 
         container.addTab("Students", student);
 
-        javax.swing.GroupLayout ContaLayout = new javax.swing.GroupLayout(Conta);
-        Conta.setLayout(ContaLayout);
-        ContaLayout.setHorizontalGroup(
-            ContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+        adminstrator.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        adminstrator.setName("administrator"); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
         );
-        ContaLayout.setVerticalGroup(
-            ContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 665, Short.MAX_VALUE)
         );
 
-        container.addTab("Admin", Conta);
+        adminstrator.addTab("Loans", jPanel6);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+
+        adminstrator.addTab("Books", jPanel5);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+
+        adminstrator.addTab("Students", jPanel7);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+
+        adminstrator.addTab("Config.", jPanel8);
+
+        container.addTab("Adminstrator", adminstrator);
 
         getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -1181,12 +1235,7 @@ public class MainGui extends javax.swing.JFrame {
     }//GEN-LAST:event_returnedBorrowsActionPerformed
 
     private void returnBookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBookBtnActionPerformed
-        String code = this.overviewTable.getModel().getValueAt(this.overviewTable.getSelectedRow(), 0).toString();
-        if (code != null && !code.isEmpty() && JOptionPane.showConfirmDialog(this, "Sure to cancel this loan?") == 0) {
-            Double toPay = this.dataProc.returnABook(code);
-            this.load();
-            JOptionPane.showMessageDialog(this, "The student will pay: " + String.valueOf(toPay));
-        }
+        this.returnBook(true);
     }//GEN-LAST:event_returnBookBtnActionPerformed
 
     private void reloadBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reloadBtnMouseClicked
@@ -1301,14 +1350,14 @@ public class MainGui extends javax.swing.JFrame {
 
     private void saveNewStuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveNewStuMouseClicked
         if (this.newStuIdCard.getText().length() >= 8
-            && this.newStuName.getText().length() > 3
-            && this.newStuDob.getText().length() == 10 ) {
+                && this.newStuName.getText().length() > 3
+                && this.newStuDob.getText().length() == 10) {
             Student newStu = new Student(
-                this.newStuIdCard.getText(),
-                this.newStuName.getText(),
-                this.newStuDeg.getSelectedItem().toString(),
-                this.newStuDob.getText());
-            if (JOptionPane.showConfirmDialog(this, "\nSure to save\nthis student?\n") == 0){
+                    this.newStuIdCard.getText(),
+                    this.newStuName.getText(),
+                    this.newStuDeg.getSelectedItem().toString(),
+                    this.newStuDob.getText());
+            if (JOptionPane.showConfirmDialog(this, "\nSure to save\nthis student?\n") == 0) {
                 JOptionPane.showMessageDialog(this, this.dataProc.saveStdent(newStu));
                 this.newStuIdCard.setText("");
                 this.newStuName.setText("");
@@ -1319,7 +1368,7 @@ public class MainGui extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "\nFullfill all the fields to proceed!\n");
         }
-        
+
     }//GEN-LAST:event_saveNewStuMouseClicked
 
     private void reloadStuCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reloadStuCodeMouseClicked
@@ -1328,13 +1377,35 @@ public class MainGui extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.out.println("returning a book");
+        this.returnBook(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void containerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_containerStateChanged
+        System.out.println(this.container.getSelectedComponent().getName());
+        System.out.println(this.container.getModel().getSelectedIndex());
+        //System.out.println(this.adminstrator.getComponentAt(this.adminstrator.getSelectedIndex()));
+        ///container.remove(this.container.getModel().getSelectedIndex());
+    }//GEN-LAST:event_containerStateChanged
 
     public void load() {
         this.loadOverview();
         this.loadBorrows("a");
         this.loadBooks();
-        this.loadStudents("--",'x', 'a');
+        this.loadStudents("--", 'x', 'a');
+    }
+
+    private void returnBook(boolean ovrvw) {
+        String code = "";
+        if (ovrvw) {
+            code = this.overviewTable.getModel().getValueAt(this.overviewTable.getSelectedRow(), 0).toString();
+        } else {
+            code = this.overviewTable.getModel().getValueAt(this.borrowsTable.getSelectedRow(), 0).toString();
+        }
+        if (code != null && !code.isEmpty() && JOptionPane.showConfirmDialog(this, "Sure to cancel this loan?") == 0) {
+            Double toPay = this.dataProc.returnABook(code);
+            this.load();
+            JOptionPane.showMessageDialog(this, "The student will pay: " + String.valueOf(toPay));
+        }
     }
 
     private void reloadStuTable() {
@@ -1345,9 +1416,9 @@ public class MainGui extends javax.swing.JFrame {
                 : this.activeStudents.isSelected() ? 'l'
                 : this.inactiveStudents.isSelected() ? 'i' : '-';
         this.loadStudents(this.stuFilterCriteria.getText(), filtrOn, filterBy);
-        System.out.println("f -> "+filtrOn+filterBy);
+        System.out.println("f -> " + filtrOn + filterBy);
     }
-    
+
     private void reloadBooksTable() {
         char filterOn = this.bookTitleChooser.isSelected() ? 't'
                 : this.bookAuthorChooser.isSelected() ? 'a'
@@ -1408,21 +1479,21 @@ public class MainGui extends javax.swing.JFrame {
         this.booksTable.getColumn("Avaliable").setPreferredWidth(60);
         this.booksTable.getColumn("Stock").setMaxWidth(60);
         this.booksTable.getColumn("Stock").setPreferredWidth(60);
-        
+
         HashMap map = this.dataProc.getStatistics();
         this.totalReg.setText(map.get("totBook").toString());
         this.currOutOf.setText(map.get("borrowedBooks").toString());
     }
-    
-    public void loadStudents(String filter, char on, char by){
+
+    public void loadStudents(String filter, char on, char by) {
         this.stuTable.setModel(this.dataProc.studentsTab(filter, on, by));
         this.stuTable.getColumn("Code").setMaxWidth(70);
         this.stuTable.getColumn("Code").setPreferredWidth(70);
-        
+
         setNewStuCode();
     }
-    
-    private void loadStuDetails(){
+
+    private void loadStuDetails() {
         Student detailedStu = dataProc.getDetailedStudent(this.stuTable.getValueAt(this.stuTable.getSelectedRow(), 0).toString());
         this.stuCodeLabl.setText(detailedStu.getID());
         this.stuNamelabl.setText(detailedStu.getName());
@@ -1431,7 +1502,7 @@ public class MainGui extends javax.swing.JFrame {
         this.activeStuLoans.setText(Integer.toString(detailedStu.getActiveLoans()));
         this.allStuLoans.setText(Integer.toString(detailedStu.getAllLoans()));
     }
-  
+
     private void setNewStuCode() {
         Random rnd = new Random();
         String seed = "BCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", newCode = "24";
@@ -1440,12 +1511,16 @@ public class MainGui extends javax.swing.JFrame {
         }
         this.newStuIdCard.setText(newCode);
     }
+    
+    private void createAddAdmin(){
+        System.out.println("changing to admin panel");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Conta;
     private javax.swing.JRadioButton activeBorrows;
     private javax.swing.JLabel activeStuLoans;
     private javax.swing.JRadioButton activeStudents;
+    private javax.swing.JTabbedPane adminstrator;
     private javax.swing.JRadioButton allBorrows;
     private javax.swing.JLabel allStuLoans;
     private javax.swing.JRadioButton allStudents;
@@ -1492,7 +1567,6 @@ public class MainGui extends javax.swing.JFrame {
     private javax.swing.JRadioButton inactiveStudents;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1531,6 +1605,10 @@ public class MainGui extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField newBookAuthor;
     private javax.swing.JTextField newBookCode;

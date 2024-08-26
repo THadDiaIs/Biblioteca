@@ -20,6 +20,7 @@ public class BibliotecaMain {
 
     public static void main(String[] args) {
         DataLoader dtL = new DataLoader();
+        //dtL.getClass().getResource(name);
         ArrayList<Student> students = dtL.StudentDBLoader(new File("src/Data/students.diadb"));
         ArrayList<Loan> borrows = dtL.BorrowDBLoader(new File("src/Data/borrows.diadb"));
         ArrayList<Book> books = dtL.BookDBLoader(new File("src/Data/books.diadb"));

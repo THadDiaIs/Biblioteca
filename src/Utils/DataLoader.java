@@ -20,12 +20,6 @@ import java.util.logging.Logger;
  * @author antonh
  */
 public class DataLoader {
-//    file format
-    //code; //3\d - 3\w
-    //name;
-    //author;
-    //editorial;
-    //edition;
 
 //    all the: read from filesystem methods, throws the  expection to function who implements it
     private Scanner FileLoader(File file, String fileName) throws InterruptedException, InvocationTargetException {
